@@ -12,43 +12,49 @@ body {
   background-color: #FFFDF7;
   margin: 0;
   color: #333;
-  line-height: 1.8;
 }
 
-/* ===== Header Section (Light Yellow) ===== */
+/* ===== Header (Light Yellow) ===== */
 .header-container {
   background-color: #FFFDE7;
-  padding: 15px 0;
+  padding: 20px 10px;
   text-align: center;
   border-bottom: 1px solid #FFECB3;
 }
 
+/* Site Name - Two Lines */
 .site-name {
   color: #E91E63; /* Pink */
   font-size: 26px;
   font-weight: bold;
   text-decoration: none;
+  line-height: 1.2;
   display: block;
   margin-bottom: 15px;
 }
 
-/* ===== Top Menu (Scrollable with Border Box) ===== */
-.top-nav-wrapper {
-  overflow-x: auto;
-  white-space: nowrap;
-  padding: 5px 10px;
-  display: flex;
-  justify-content: center;
-  scrollbar-width: none; /* Firefox */
+.site-name span {
+  display: block; /* రెండో లైన్ కోసం */
 }
 
-.top-nav-wrapper::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+/* ===== Scrollable Menu Setup ===== */
+.menu-scroll-wrapper {
+  overflow-x: auto; /* పక్కకు స్క్రోల్ అవ్వడానికి */
+  white-space: nowrap;
+  padding: 10px 0;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* స్క్రోల్ బార్ కనిపించకుండా ఉండటానికి */
+.menu-scroll-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .top-nav {
   display: inline-flex;
   gap: 10px;
+  padding: 0 15px;
 }
 
 .top-nav a {
@@ -56,59 +62,45 @@ body {
   color: #E91E63;
   font-weight: bold;
   font-size: 14px;
-  padding: 6px 15px;
+  padding: 7px 18px;
   border: 1px solid #E91E63; /* Single Line Border Box */
   border-radius: 4px;
-  transition: 0.3s;
-}
-
-.top-nav a:hover {
-  background-color: #E91E63;
-  color: white;
+  display: inline-block;
 }
 
 /* ===== Sub-Title (Curved Pink Box) ===== */
-.sub-title-container {
+.sub-title-area {
   text-align: center;
-  margin: 20px 0;
+  margin: 25px 0;
 }
 
-.curved-pink-box {
-  display: inline-block;
-  background-color: #E91E63; /* Pink */
-  color: white; /* White Text */
-  padding: 10px 30px;
-  border-radius: 50px; /* Curved edges */
-  font-size: 22px;
+.curved-box {
+  background-color: #E91E63;
+  color: white;
+  padding: 10px 35px;
+  border-radius: 50px;
+  font-size: 20px;
   font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: inline-block;
 }
 
-/* ===== Content Area (143 Pages Based) ===== */
+/* ===== Content Box ===== */
 .main-content {
   max-width: 900px;
-  margin: 0 auto 40px auto;
-  padding: 25px;
-  background: white;
-  border: 1px solid #EEE;
-  border-radius: 8px;
-  min-height: 500px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin: 0 auto 50px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  min-height: 400px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* ===== Footer (Blue Box) ===== */
-.footer-blue-box {
-  background-color: #0D1B3D; /* Dark Blue */
+/* ===== Footer (Blue) ===== */
+.footer-box {
+  background-color: #0D1B3D;
   color: white;
   text-align: center;
-  padding: 25px;
-  font-size: 14px;
-}
-
-/* Adjustments for Mobile */
-@media (max-width: 600px) {
-  .top-nav-wrapper { justify-content: flex-start; }
-  .site-name { font-size: 20px; }
+  padding: 30px;
 }
 </style>
 </head>
@@ -116,9 +108,12 @@ body {
 <body>
 
 <header class="header-container">
-  <a href="/Upasana-Chandrika/" class="site-name">Namo Narayanaya Bhakthi Channel</a>
+  <a href="/Upasana-Chandrika/" class="site-name">
+    Namo Narayanaya 
+    <span>Bhakthi Channel</span>
+  </a>
   
-  <div class="top-nav-wrapper">
+  <div class="menu-scroll-wrapper">
     <nav class="top-nav">
       <a href="/Upasana-Chandrika/">Home</a>
       <a href="/Omnnbc/">Main Site</a>
@@ -127,19 +122,19 @@ body {
   </div>
 </header>
 
-<div class="sub-title-container">
-  <div class="curved-pink-box">
+<div class="sub-title-area">
+  <div class="curved-box">
     Upasana Chandrika
   </div>
 </div>
 
 <main class="main-content">
-  <div id="page-content" style="text-align: center;">
-    <p>శ్రీ ఉపాసన చంద్రికా గ్రంథం (143 పేజీలు) లోడ్ అవుతోంది...</p>
-    </div>
+  <div style="text-align: center; padding-top: 50px;">
+    శ్రీ ఉపాసన చంద్రికా గ్రంథం లోడ్ అవుతోంది...
+  </div>
 </main>
 
-<footer class="footer-blue-box">
+<footer class="footer-box">
   © 2026 Namo Narayanaya Bhakthi Channel | All Rights Reserved
 </footer>
 
