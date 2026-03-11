@@ -36,13 +36,12 @@ body {
   display: block;
 }
 
-/* ===== Top Menu (Pink Border Boxes) ===== */
+/* ===== Top Menu (Scrollable) ===== */
 .menu-scroll-wrapper {
   overflow-x: auto;
   white-space: nowrap;
   padding: 15px 0 10px 0;
   width: 100%;
-  -webkit-overflow-scrolling: touch;
 }
 
 .menu-scroll-wrapper::-webkit-scrollbar { display: none; }
@@ -63,7 +62,7 @@ body {
   border-radius: 4px;
 }
 
-/* ===== Sub-Title (Pink Curved Box) ===== */
+/* ===== Sub-Title (Curved Pink Box) ===== */
 .sub-title-area {
   text-align: center;
   margin: 25px 0;
@@ -80,69 +79,72 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* ===== Pagination (Pink Numbers) ===== */
-.page-scroll-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto;
-  max-width: 95%;
-  gap: 5px;
-}
-
-.scroll-btn {
-  background-color: #E91E63; /* Changed to Pink */
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 18px;
-  padding: 6px 10px;
-  cursor: pointer;
-}
-
-.page-numbers {
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  gap: 6px;
-  padding: 8px;
-  max-width: 80%;
-  background: #FFFDE7;
-  border-radius: 8px;
-  scrollbar-width: none;
-}
-
-.page-numbers::-webkit-scrollbar { display: none; }
-
-.page-numbers a {
-  display: inline-block;
-  padding: 6px 12px;
-  text-decoration: none;
-  color: #E91E63; /* Changed to Pink */
-  font-weight: bold;
-  border: 1px solid #E91E63; /* Changed to Pink */
-  border-radius: 6px;
-}
-
-.page-numbers a.active {
-  background: #E91E63; /* Changed to Pink */
-  color: white;
-}
-
-/* ===== Content Box (Light Yellow Background & Dark Brown Text) ===== */
-.content {
+/* ===== Content Box Setup ===== */
+.content-wrapper {
   max-width: 850px;
   margin: 20px auto;
-  padding: 40px 25px;
-  background-color: #FFFDE7; /* Light Yellow Background */
-  color: #5C2E00; /* Dark Brown Text */
+  padding: 20px;
+  background-color: #FFFDE7;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   min-height: 400px;
+  color: #5C2E00;
+  position: relative;
+}
+
+/* Round Page Number Box */
+.page-badge-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -45px;
+  margin-bottom: 20px;
+}
+
+.page-badge {
+  background-color: #E91E63;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  border: 3px solid #FFFDF7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.page-content {
+  padding: 20px;
   font-size: 20px;
 }
 
-/* ===== Footer (Blue Box) ===== */
+/* ===== Bottom Navigation Buttons ===== */
+.bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding: 0 20px 20px 20px;
+}
+
+.nav-btn {
+  background-color: #E91E63;
+  color: white;
+  text-decoration: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.nav-btn.disabled {
+  background-color: #ccc;
+  pointer-events: none;
+}
+
+/* ===== Footer ===== */
 .footer-box {
   background-color: #0D1B3D;
   color: white;
@@ -171,16 +173,17 @@ body {
   <div class="curved-box">Upasana Chandrika</div>
 </div>
 
-<div class="page-scroll-wrapper">
-  <button class="scroll-btn" onclick="scrollPages(-200)">&#9664;</button>
-  <div class="page-numbers" id="pagination"></div>
-  <button class="scroll-btn" onclick="scrollPages(200)">&#9654;</button>
-</div>
-
-<main class="content" id="content">
-  <div style="text-align:center; padding: 50px 0;">
-    <h2 style="color: #E91E63; font-size: 28px;">Loading Content...</h2>
+<main class="content-wrapper">
+  <div class="page-badge-container">
+    <div class="page-badge" id="current-page-display">1</div>
   </div>
+
+  <div id="content" class="page-content">
+    Loading Content...
+  </div>
+
+  <div class="bottom-nav" id="bottom-navigation">
+    </div>
 </main>
 
 <footer class="footer-box">
@@ -190,47 +193,53 @@ body {
 <script>
 const totalPages = 143;
 const contentDiv = document.getElementById("content");
-const paginationDiv = document.getElementById("pagination");
+const pageDisplay = document.getElementById("current-page-display");
+const bottomNav = document.getElementById("bottom-navigation");
 
 let pageParam = new URLSearchParams(window.location.search).get("page");
 let page = pageParam ? parseInt(pageParam) : 1;
 
+if (isNaN(page) || page < 1) page = 1;
+if (page > totalPages) page = totalPages;
+
+// Function to load content and update UI
 function loadPage(p) {
+  pageDisplay.innerText = p; // Update round box
+  
   fetch("pages/page" + p + ".html")
     .then(response => {
-      if (!response.ok) throw new Error("File not found");
+      if (!response.ok) throw new Error("Not found");
       return response.text();
     })
     .then(data => {
       contentDiv.innerHTML = data;
+      updateNavButtons();
     })
     .catch(() => {
       contentDiv.innerHTML = `
         <div style="text-align: center; padding: 50px 0;">
           <h2 style="color: #E91E63; font-size: 32px;">Coming Soon</h2>
-          <p style="font-size: 18px;">This page content is being prepared.</p>
+          <p>This page content is being prepared.</p>
         </div>`;
+      updateNavButtons();
     });
 }
 
-for (let i = 1; i <= totalPages; i++) {
-  const link = document.createElement("a");
-  link.href = "?page=" + i;
-  link.innerText = i;
-  if (i === page) link.classList.add("active");
-  paginationDiv.appendChild(link);
-}
-
-function scrollPages(dist) {
-  paginationDiv.scrollBy({ left: dist, behavior: "smooth" });
+// Function to create Prev/Next buttons
+function updateNavButtons() {
+  let prevBtn = page > 1 
+    ? `<a href="?page=${page-1}" class="nav-btn">Previous</a>` 
+    : `<a href="#" class="nav-btn disabled">Previous</a>`;
+    
+  let nextBtn = page < totalPages 
+    ? `<a href="?page=${page+1}" class="nav-btn">Next</a>` 
+    : `<a href="#" class="nav-btn disabled">Next</a>`;
+    
+  bottomNav.innerHTML = prevBtn + nextBtn;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   loadPage(page);
-  const active = document.querySelector(".active");
-  if (active) {
-    active.scrollIntoView({ behavior: "smooth", inline: "center" });
-  }
 });
 </script>
 
