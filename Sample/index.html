@@ -11,111 +11,135 @@ body {
   font-family: 'Noto Sans Telugu', sans-serif;
   background-color: #FFFDF7;
   margin: 0;
-  color: #5C2E00;
+  color: #333;
   line-height: 1.8;
 }
 
-/* ===== Main Header (Light Yellow) ===== */
-.main-header {
-  background-color: #FFFDE7; /* Light Yellow Background */
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #FFECB3;
-  flex-wrap: wrap;
+/* ===== Header Section (Light Yellow) ===== */
+.header-container {
+  background-color: #FFFDE7;
+  padding: 15px 0;
+  text-align: center;
+  border-bottom: 1px solid #FFECB3;
 }
 
-/* Site Name (Pink) */
 .site-name {
-  color: #E91E63; /* Pink Color */
-  font-size: 24px;
+  color: #E91E63; /* Pink */
+  font-size: 26px;
   font-weight: bold;
   text-decoration: none;
+  display: block;
+  margin-bottom: 15px;
 }
 
-/* Top Menu Links (Pink Box Model) */
-.top-nav {
+/* ===== Top Menu (Scrollable with Border Box) ===== */
+.top-nav-wrapper {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 5px 10px;
   display: flex;
+  justify-content: center;
+  scrollbar-width: none; /* Firefox */
+}
+
+.top-nav-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.top-nav {
+  display: inline-flex;
   gap: 10px;
 }
 
 .top-nav a {
   text-decoration: none;
-  color: white;
-  background-color: #E91E63; /* Pink Box */
+  color: #E91E63;
   font-weight: bold;
   font-size: 14px;
   padding: 6px 15px;
-  border-radius: 5px;
+  border: 1px solid #E91E63; /* Single Line Border Box */
+  border-radius: 4px;
   transition: 0.3s;
 }
 
 .top-nav a:hover {
-  background-color: #C2185B; /* Darker Pink on Hover */
+  background-color: #E91E63;
+  color: white;
 }
 
-/* ===== Book Title Bar (Orange) ===== */
-.book-menu-bar {
-  background-color: #FF9800;
-  color: white;
+/* ===== Sub-Title (Curved Pink Box) ===== */
+.sub-title-container {
   text-align: center;
-  padding: 12px;
+  margin: 20px 0;
+}
+
+.curved-pink-box {
+  display: inline-block;
+  background-color: #E91E63; /* Pink */
+  color: white; /* White Text */
+  padding: 10px 30px;
+  border-radius: 50px; /* Curved edges */
   font-size: 22px;
   font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* ===== Content Area ===== */
-.content-box {
-  max-width: 850px;
-  margin: 30px auto;
+/* ===== Content Area (143 Pages Based) ===== */
+.main-content {
+  max-width: 900px;
+  margin: 0 auto 40px auto;
   padding: 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-  font-size: 19px;
-  min-height: 450px;
+  background: white;
+  border: 1px solid #EEE;
+  border-radius: 8px;
+  min-height: 500px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* ===== Footer ===== */
-.footer {
-  background: #0D1B3D;
+/* ===== Footer (Blue Box) ===== */
+.footer-blue-box {
+  background-color: #0D1B3D; /* Dark Blue */
   color: white;
   text-align: center;
-  padding: 20px;
-  margin-top: 50px;
+  padding: 25px;
+  font-size: 14px;
 }
 
-/* Mobile Adjustments */
+/* Adjustments for Mobile */
 @media (max-width: 600px) {
-  .main-header { text-align: center; justify-content: center; flex-direction: column; gap: 15px; }
-  .top-nav { flex-wrap: wrap; justify-content: center; }
+  .top-nav-wrapper { justify-content: flex-start; }
+  .site-name { font-size: 20px; }
 }
 </style>
 </head>
 
 <body>
 
-<header class="main-header">
+<header class="header-container">
   <a href="/Upasana-Chandrika/" class="site-name">Namo Narayanaya Bhakthi Channel</a>
   
-  <nav class="top-nav">
-    <a href="/Upasana-Chandrika/">Home</a>
-    <a href="/Omnnbc/">Main Site</a>
-    <a href="/Dasabodha/">Dasabodha</a>
-  </nav>
+  <div class="top-nav-wrapper">
+    <nav class="top-nav">
+      <a href="/Upasana-Chandrika/">Home</a>
+      <a href="/Omnnbc/">Main Site</a>
+      <a href="/Dasabodha/">Dasabodha</a>
+    </nav>
+  </div>
 </header>
 
-<div class="book-menu-bar">
-  Upasana Chandrika
+<div class="sub-title-container">
+  <div class="curved-pink-box">
+    Upasana Chandrika
+  </div>
 </div>
 
-<main class="content-box">
-  <p style="text-align:center;">శ్రీ ఉపాసన చంద్రికా గ్రంథం లోడ్ అవుతోంది...</p>
+<main class="main-content">
+  <div id="page-content" style="text-align: center;">
+    <p>శ్రీ ఉపాసన చంద్రికా గ్రంథం (143 పేజీలు) లోడ్ అవుతోంది...</p>
+    </div>
 </main>
 
-<footer class="footer">
+<footer class="footer-blue-box">
   © 2026 Namo Narayanaya Bhakthi Channel | All Rights Reserved
 </footer>
 
