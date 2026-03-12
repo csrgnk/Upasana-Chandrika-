@@ -8,7 +8,7 @@
 <style>
 /* ===== Global Reset ===== */
 * {
-  box-sizing: border-box; /* మొబైల్ ఫిట్టింగ్ కోసం ఇది ముఖ్యం */
+  box-sizing: border-box;
 }
 
 body {
@@ -17,10 +17,10 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
-  overflow-x: hidden; /* పక్కకు స్క్రోల్ అవ్వకుండా */
+  overflow-x: hidden;
 }
 
-/* ===== Top Pink Navigation ===== */
+/* ===== Top Pink Navigation (Image Model) ===== */
 .top-header-nav {
   background-color: #C2185B;
   padding: 12px 0;
@@ -108,7 +108,7 @@ body {
 
 /* ===== Content Box (Responsive Fix) ===== */
 .main-content-card {
-  max-width: 90%; /* మొబైల్ కోసం */
+  max-width: 90%;
   width: 850px;
   margin: 50px auto;
   background-color: #FFFDE7;
@@ -143,17 +143,17 @@ body {
 .page-text-content { 
   font-size: 19px; 
   text-align: center; 
-  word-wrap: break-word; /* టెక్స్ట్ బయటకు వెళ్లకుండా */
+  word-wrap: break-word;
 }
 
-/* ===== Coming Soon Style (Mobile Fix) ===== */
+/* Coming Soon Fix */
 .coming-soon-container {
   background-color: #C2185B;
   color: white;
   padding: 40px 15px;
   border-radius: 12px;
   text-align: center;
-  width: 100%; /* బాక్స్ వెడల్పు సరిచేయడానికి */
+  width: 100%;
 }
 .coming-soon-container h2 { 
   color: white !important; 
@@ -229,11 +229,13 @@ const paginationDiv = document.getElementById("pagination");
 const pageBadge = document.getElementById("current-page");
 const btmNav = document.getElementById("bottom-nav");
 
+// URL నుండి పేజీ నంబర్ తీసుకోవడం
 let page = new URLSearchParams(window.location.search).get("page") || 1;
 page = parseInt(page);
 
 function loadPage(p) {
   pageBadge.innerText = p;
+  // ఇది /Upasana-Chandrika/pages/ ఫోల్డర్ నుండి ఫైల్స్ లోడ్ చేస్తుంది
   fetch("pages/page" + p + ".html")
     .then(res => {
       if (!res.ok) throw new Error();
@@ -244,7 +246,6 @@ function loadPage(p) {
       updateButtons();
     })
     .catch(() => {
-      // Coming Soon Box Fix for Mobile
       contentDiv.innerHTML = `
         <div class="coming-soon-container">
           <h2>Coming Soon</h2>
