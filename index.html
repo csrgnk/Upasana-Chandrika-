@@ -9,122 +9,119 @@
 /* ===== Body & Background ===== */
 body {
   font-family: Arial, sans-serif;
-  background-color: #FFFDF7;
+  background-color: #F4F7F6;
   margin: 0;
   color: #333;
-  line-height: 1.6;
 }
 
-/* ===== Header (Light Yellow & Pink Name) ===== */
-.header-container {
-  background-color: #FFFDE7;
-  padding: 20px 10px;
-  text-align: center;
-  border-bottom: 1px solid #FFECB3;
-}
-
-.site-name {
-  color: #E91E63;
-  font-size: 26px;
-  font-weight: bold;
-  text-decoration: none;
-  line-height: 1.2;
-  display: block;
-}
-.site-name span { display: block; }
-
-/* ===== Top Menu (Scrollable Sites) ===== */
-.menu-scroll-wrapper {
+/* ===== Top Pink Navigation (Image Model) ===== */
+.top-header-nav {
+  background-color: #C2185B; /* Dark Pink from Image */
+  padding: 10px 0;
   overflow-x: auto;
   white-space: nowrap;
-  padding: 15px 0 5px 0;
-  width: 100%;
+  display: flex;
+  scrollbar-width: none;
 }
-.menu-scroll-wrapper::-webkit-scrollbar { display: none; }
+.top-header-nav::-webkit-scrollbar { display: none; }
 
-.top-nav {
-  display: inline-flex;
-  gap: 10px;
+.nav-links-container {
+  display: flex;
+  gap: 15px;
   padding: 0 15px;
 }
-.top-nav a {
+
+.nav-links-container a {
   text-decoration: none;
-  color: #E91E63;
+  color: #C2185B;
+  background-color: white; /* White Box Link */
   font-weight: bold;
   font-size: 14px;
-  padding: 7px 18px;
-  border: 1px solid #E91E63;
-  border-radius: 4px;
+  padding: 6px 15px;
+  border-radius: 5px;
 }
 
-/* ===== Scrollable Page Numbers ===== */
-.page-scroll-section {
+/* ===== Channel Name Section (Light Yellow) ===== */
+.site-title-box {
+  background-color: #FFFDE7;
+  padding: 25px 10px;
+  text-align: center;
+  border-bottom: 4px solid #FFD600; /* Yellow line from Image */
+}
+
+.site-title-box h1 {
+  color: #C2185B;
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.3;
+}
+
+/* ===== Page Numbers Scroll (Left-Right) ===== */
+.page-nav-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 15px auto;
-  max-width: 95%;
-  gap: 5px;
+  padding: 15px 0;
+  background: white;
 }
 
 .scroll-btn {
-  background-color: #E91E63;
+  background-color: #C2185B;
   color: white;
   border: none;
   border-radius: 4px;
-  font-size: 18px;
-  padding: 5px 10px;
+  padding: 5px 12px;
   cursor: pointer;
 }
 
-.page-numbers-scroll {
+.numbers-wrapper {
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
-  gap: 6px;
-  padding: 10px;
-  max-width: 85%;
+  gap: 8px;
+  padding: 5px 15px;
+  max-width: 75%;
   scrollbar-width: none;
 }
-.page-numbers-scroll::-webkit-scrollbar { display: none; }
+.numbers-wrapper::-webkit-scrollbar { display: none; }
 
-.page-numbers-scroll a {
-  display: inline-block;
-  padding: 6px 15px;
+.numbers-wrapper a {
   text-decoration: none;
-  color: #E91E63;
+  color: #C2185B;
   font-weight: bold;
-  border: 1px solid #E91E63;
+  border: 1px solid #C2185B;
+  padding: 5px 12px;
   border-radius: 4px;
+  font-size: 14px;
 }
 
-.page-numbers-scroll a.active {
-  background: #E91E63;
+.numbers-wrapper a.active {
+  background-color: #C2185B;
   color: white;
 }
 
-/* ===== Content Box Setup ===== */
-.content-wrapper {
+/* ===== Content Box (Light Yellow & Dark Brown Text) ===== */
+.main-content-card {
   max-width: 850px;
   margin: 40px auto;
-  padding: 20px;
   background-color: #FFFDE7;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   min-height: 400px;
-  color: #5C2E00; /* Main Text remains Dark Brown */
   position: relative;
+  color: #5C2E00; /* Dark Brown Text */
 }
 
-/* Middle Round Badge */
-.page-badge-container {
+/* Round Badge in Middle */
+.badge-pos {
   display: flex;
   justify-content: center;
-  margin-top: -45px;
+  margin-top: -50px;
   margin-bottom: 20px;
 }
-.page-badge {
-  background-color: #E91E63;
+.round-badge {
+  background-color: #C2185B;
   color: white;
   width: 50px;
   height: 50px;
@@ -133,61 +130,29 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 18px;
-  border: 3px solid #FFFDF7;
+  border: 3px solid #F4F7F6;
 }
 
-/* ===== H2 & H3 Pink Styling (No Box) ===== */
-.page-content h2, .page-content h3 {
-  color: #E91E63; /* Pink Color Header */
-  font-size: 26px;
-  margin: 25px 0;
-  text-align: center;
-  border: none;
-  background: none;
-  font-weight: bold;
-}
+.page-text-content { font-size: 20px; text-align: center; }
+.page-text-content h2, .page-text-content h3 { color: #C2185B; margin-top: 0; }
 
-.page-content { 
-  padding: 20px; 
-  font-size: 20px;
-  text-align: center;
-}
-
-/* ===== Coming Soon Style (White Text in Pink Box) ===== */
-.coming-soon-box {
-  text-align: center;
-  padding: 50px 20px;
-  background-color: #E91E63; 
-  border-radius: 12px;
-  color: white; 
-  margin: 20px;
-}
-
-.coming-soon-box h2 {
-  color: white !important; 
-  font-size: 32px;
-}
-
-/* ===== Bottom Nav Buttons ===== */
+/* ===== Nav Buttons ===== */
 .bottom-nav {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
-  padding: 0 10px 10px 10px;
+  padding: 20px;
 }
 .nav-btn {
-  background-color: #E91E63;
+  background-color: #C2185B;
   color: white;
   text-decoration: none;
   padding: 10px 25px;
   border-radius: 25px;
   font-weight: bold;
 }
-.nav-btn.disabled { background-color: #ccc; pointer-events: none; }
 
 /* ===== Footer ===== */
-.footer-box {
+.footer {
   background-color: #0D1B3D;
   color: white;
   text-align: center;
@@ -199,34 +164,37 @@ body {
 
 <body>
 
-<header class="header-container">
-  <a href="/Upasana-Chandrika/" class="site-name">Namo Narayanaya <span>Bhakthi Channel</span></a>
-  <div class="menu-scroll-wrapper">
-    <nav class="top-nav">
-      <a href="/Upasana-Chandrika/">Home</a>
-      <a href="/Omnnbc/">Main Site</a>
-      <a href="/Dasabodha/">Dasabodha</a>
-    </nav>
+<nav class="top-header-nav">
+  <div class="nav-links-container">
+    <a href="/Upasana-Chandrika/">Home</a>
+    <a href="/Omnnbc/">About Us</a>
+    <a href="/Dasabodha/">Dasabodha</a>
+    <a href="#">Contact Us</a>
+    <a href="#">DMCA</a>
   </div>
-</header>
+</nav>
 
-<div class="page-scroll-section">
-  <button class="scroll-btn" onclick="sideScroll(-200)">&#10094;</button>
-  <div class="page-numbers-scroll" id="pagination"></div>
-  <button class="scroll-btn" onclick="sideScroll(200)">&#10095;</button>
+<div class="site-title-box">
+  <h1>Namo Narayanaya<br>Bhakthi Channel</h1>
 </div>
 
-<main class="content-wrapper">
-  <div class="page-badge-container">
-    <div class="page-badge" id="current-page-display">1</div>
+<div class="page-nav-section">
+  <button class="scroll-btn" onclick="sideScroll(-150)">&#10094;</button>
+  <div class="numbers-wrapper" id="pagination"></div>
+  <button class="scroll-btn" onclick="sideScroll(150)">&#10095;</button>
+</div>
+
+<main class="main-content-card">
+  <div class="badge-pos">
+    <div class="round-badge" id="current-page">1</div>
   </div>
+  
+  <div id="content" class="page-text-content">Loading...</div>
 
-  <div id="content" class="page-content">Loading Content...</div>
-
-  <div class="bottom-nav" id="bottom-navigation"></div>
+  <div class="bottom-nav" id="bottom-nav"></div>
 </main>
 
-<footer class="footer-box">
+<footer class="footer">
   © 2026 Namo Narayanaya Bhakthi Channel | All Rights Reserved
 </footer>
 
@@ -234,51 +202,51 @@ body {
 const totalPages = 143;
 const contentDiv = document.getElementById("content");
 const paginationDiv = document.getElementById("pagination");
-const pageDisplay = document.getElementById("current-page-display");
-const bottomNav = document.getElementById("bottom-navigation");
+const pageBadge = document.getElementById("current-page");
+const btmNav = document.getElementById("bottom-nav");
 
-let pageParam = new URLSearchParams(window.location.search).get("page");
-let page = pageParam ? parseInt(pageParam) : 1;
+let page = new URLSearchParams(window.location.search).get("page") || 1;
+page = parseInt(page);
 
 function loadPage(p) {
-  pageDisplay.innerText = p;
+  pageBadge.innerText = p;
   fetch("pages/page" + p + ".html")
-    .then(res => { if (!res.ok) throw new Error(); return res.text(); })
-    .then(data => { contentDiv.innerHTML = data; updateNavButtons(); })
+    .then(res => res.text())
+    .then(data => {
+      contentDiv.innerHTML = data;
+      updateButtons();
+    })
     .catch(() => {
       contentDiv.innerHTML = `
-        <div class="coming-soon-box">
+        <div style="background:#C2185B; color:white; padding:40px; border-radius:10px;">
           <h2>Coming Soon</h2>
-          <p>This content is being prepared.</p>
+          <p>Content is being prepared.</p>
         </div>`;
-      updateNavButtons();
+      updateButtons();
     });
 }
 
 for (let i = 1; i <= totalPages; i++) {
-  const link = document.createElement("a");
-  link.href = "?page=" + i;
-  link.innerText = i;
-  if (i === page) link.classList.add("active");
-  paginationDiv.appendChild(link);
+  const a = document.createElement("a");
+  a.href = "?page=" + i;
+  a.innerText = i;
+  if (i === page) a.className = "active";
+  paginationDiv.appendChild(a);
 }
 
-function sideScroll(dist) {
-  paginationDiv.scrollBy({ left: dist, behavior: "smooth" });
-}
+function sideScroll(d) { paginationDiv.scrollBy({ left: d, behavior: 'smooth' }); }
 
-function updateNavButtons() {
-  let prev = page > 1 ? `<a href="?page=${page-1}" class="nav-btn">Previous</a>` : `<a href="#" class="nav-btn disabled">Previous</a>`;
-  let next = page < totalPages ? `<a href="?page=${page+1}" class="nav-btn">Next</a>` : `<a href="#" class="nav-btn disabled">Next</a>`;
-  bottomNav.innerHTML = prev + next;
+function updateButtons() {
+  btmNav.innerHTML = `
+    ${page > 1 ? `<a href="?page=${page-1}" class="nav-btn">Previous</a>` : '<div></div>'}
+    ${page < totalPages ? `<a href="?page=${page+1}" class="nav-btn">Next</a>` : '<div></div>'}
+  `;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   loadPage(page);
   const active = document.querySelector(".active");
-  if (active) {
-    active.scrollIntoView({ behavior: "smooth", inline: "center" });
-  }
+  if (active) active.scrollIntoView({ behavior: "smooth", inline: "center" });
 });
 </script>
 
