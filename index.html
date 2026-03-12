@@ -57,7 +57,7 @@ body {
   border-radius: 4px;
 }
 
-/* ===== Scrollable Page Numbers (Left-Right Setup) ===== */
+/* ===== Scrollable Page Numbers ===== */
 .page-scroll-section {
   display: flex;
   align-items: center;
@@ -84,9 +84,9 @@ body {
   gap: 6px;
   padding: 10px;
   max-width: 85%;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
-.page-numbers-scroll::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+.page-numbers-scroll::-webkit-scrollbar { display: none; }
 
 .page-numbers-scroll a {
   display: inline-block;
@@ -96,7 +96,6 @@ body {
   font-weight: bold;
   border: 1px solid #E91E63;
   border-radius: 4px;
-  font-size: 14px;
 }
 
 .page-numbers-scroll a.active {
@@ -109,11 +108,11 @@ body {
   max-width: 850px;
   margin: 40px auto;
   padding: 20px;
-  background-color: #FFFDE7; /* Light Yellow */
+  background-color: #FFFDE7;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   min-height: 400px;
-  color: #5C2E00; /* Dark Brown */
+  color: #5C2E00;
   position: relative;
 }
 
@@ -138,7 +137,24 @@ body {
   border: 3px solid #FFFDF7;
 }
 
-.page-content { padding: 20px; font-size: 20px; }
+/* ===== H2 & H3 Brown Box Styling ===== */
+.page-content h2, .page-content h3 {
+  background-color: #5C2E00; /* Dark Brown */
+  color: white; /* White Text */
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 30px; /* Curved Setup */
+  margin: 20px auto;
+  font-size: 22px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.page-content { 
+  padding: 20px; 
+  font-size: 20px;
+  text-align: center; /* Heading ని సెంటర్ చేయడానికి */
+}
 
 /* ===== Bottom Nav Buttons ===== */
 .bottom-nav {
@@ -222,7 +238,6 @@ function loadPage(p) {
     });
 }
 
-// Generate Scrollable Page Numbers
 for (let i = 1; i <= totalPages; i++) {
   const link = document.createElement("a");
   link.href = "?page=" + i;
