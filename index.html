@@ -6,18 +6,24 @@
 <title>Upasana Chandrika</title>
 
 <style>
-/* ===== Body & Background ===== */
+/* ===== Global Reset ===== */
+* {
+  box-sizing: border-box; /* మొబైల్ ఫిట్టింగ్ కోసం ఇది ముఖ్యం */
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #F4F7F6;
   margin: 0;
+  padding: 0;
   color: #333;
+  overflow-x: hidden; /* పక్కకు స్క్రోల్ అవ్వకుండా */
 }
 
-/* ===== Top Pink Navigation (Image Model) ===== */
+/* ===== Top Pink Navigation ===== */
 .top-header-nav {
-  background-color: #C2185B; /* Dark Pink from Image */
-  padding: 10px 0;
+  background-color: #C2185B;
+  padding: 12px 0;
   overflow-x: auto;
   white-space: nowrap;
   display: flex;
@@ -27,41 +33,41 @@ body {
 
 .nav-links-container {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   padding: 0 15px;
 }
 
 .nav-links-container a {
   text-decoration: none;
   color: #C2185B;
-  background-color: white; /* White Box Link */
+  background-color: white;
   font-weight: bold;
   font-size: 14px;
-  padding: 6px 15px;
+  padding: 8px 18px;
   border-radius: 5px;
 }
 
-/* ===== Channel Name Section (Light Yellow) ===== */
+/* ===== Channel Name Section ===== */
 .site-title-box {
   background-color: #FFFDE7;
-  padding: 25px 10px;
+  padding: 30px 10px;
   text-align: center;
-  border-bottom: 4px solid #FFD600; /* Yellow line from Image */
+  border-bottom: 4px solid #FFD600;
 }
 
 .site-title-box h1 {
   color: #C2185B;
   margin: 0;
-  font-size: 26px;
+  font-size: 24px;
   line-height: 1.3;
 }
 
-/* ===== Page Numbers Scroll (Left-Right) ===== */
+/* ===== Page Numbers Scroll ===== */
 .page-nav-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 0;
+  padding: 20px 0;
   background: white;
 }
 
@@ -70,7 +76,7 @@ body {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 5px 12px;
+  padding: 8px 12px;
   cursor: pointer;
 }
 
@@ -90,7 +96,7 @@ body {
   color: #C2185B;
   font-weight: bold;
   border: 1px solid #C2185B;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 4px;
   font-size: 14px;
 }
@@ -100,55 +106,75 @@ body {
   color: white;
 }
 
-/* ===== Content Box (Light Yellow & Dark Brown Text) ===== */
+/* ===== Content Box (Responsive Fix) ===== */
 .main-content-card {
-  max-width: 850px;
-  margin: 40px auto;
+  max-width: 90%; /* మొబైల్ కోసం */
+  width: 850px;
+  margin: 50px auto;
   background-color: #FFFDE7;
   padding: 25px;
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  min-height: 400px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  min-height: 350px;
   position: relative;
-  color: #5C2E00; /* Dark Brown Text */
+  color: #5C2E00;
 }
 
-/* Round Badge in Middle */
+/* Round Badge */
 .badge-pos {
   display: flex;
   justify-content: center;
-  margin-top: -50px;
-  margin-bottom: 20px;
+  margin-top: -55px;
+  margin-bottom: 25px;
 }
 .round-badge {
   background-color: #C2185B;
   color: white;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  border: 3px solid #F4F7F6;
+  border: 4px solid #F4F7F6;
 }
 
-.page-text-content { font-size: 20px; text-align: center; }
-.page-text-content h2, .page-text-content h3 { color: #C2185B; margin-top: 0; }
+.page-text-content { 
+  font-size: 19px; 
+  text-align: center; 
+  word-wrap: break-word; /* టెక్స్ట్ బయటకు వెళ్లకుండా */
+}
+
+/* ===== Coming Soon Style (Mobile Fix) ===== */
+.coming-soon-container {
+  background-color: #C2185B;
+  color: white;
+  padding: 40px 15px;
+  border-radius: 12px;
+  text-align: center;
+  width: 100%; /* బాక్స్ వెడల్పు సరిచేయడానికి */
+}
+.coming-soon-container h2 { 
+  color: white !important; 
+  font-size: 28px; 
+  margin-top: 0;
+}
 
 /* ===== Nav Buttons ===== */
 .bottom-nav {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 0;
 }
 .nav-btn {
   background-color: #C2185B;
   color: white;
   text-decoration: none;
-  padding: 10px 25px;
+  padding: 10px 20px;
   border-radius: 25px;
   font-weight: bold;
+  font-size: 14px;
 }
 
 /* ===== Footer ===== */
@@ -157,7 +183,7 @@ body {
   color: white;
   text-align: center;
   padding: 30px;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 </style>
 </head>
@@ -167,10 +193,8 @@ body {
 <nav class="top-header-nav">
   <div class="nav-links-container">
     <a href="/Upasana-Chandrika/">Home</a>
-    <a href="/Omnnbc/">About Us</a>
+    <a href="/Omnnbc/">Main Site</a>
     <a href="/Dasabodha/">Dasabodha</a>
-    <a href="#">Contact Us</a>
-    <a href="#">DMCA</a>
   </div>
 </nav>
 
@@ -189,7 +213,7 @@ body {
     <div class="round-badge" id="current-page">1</div>
   </div>
   
-  <div id="content" class="page-text-content">Loading...</div>
+  <div id="content" class="page-text-content">Loading Content...</div>
 
   <div class="bottom-nav" id="bottom-nav"></div>
 </main>
@@ -211,16 +235,20 @@ page = parseInt(page);
 function loadPage(p) {
   pageBadge.innerText = p;
   fetch("pages/page" + p + ".html")
-    .then(res => res.text())
+    .then(res => {
+      if (!res.ok) throw new Error();
+      return res.text();
+    })
     .then(data => {
       contentDiv.innerHTML = data;
       updateButtons();
     })
     .catch(() => {
+      // Coming Soon Box Fix for Mobile
       contentDiv.innerHTML = `
-        <div style="background:#C2185B; color:white; padding:40px; border-radius:10px;">
+        <div class="coming-soon-container">
           <h2>Coming Soon</h2>
-          <p>Content is being prepared.</p>
+          <p>This content is being prepared.</p>
         </div>`;
       updateButtons();
     });
